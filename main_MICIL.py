@@ -5,7 +5,7 @@ import argparse
 
 from code_py.MICIL_test import MICIL_test
 from code_py.MICIL_train import MICIL_train
-from code_py.utils_MICIL import load_incremental_data, set_random_seeds
+from code_py.utils_MICIL import load_incremental_data
 
 def process_train(args):
 
@@ -29,7 +29,7 @@ def process_train(args):
         files_train = ["sce_E3/" + sets for sets in files_train]
         files_valid = ["sce_E3/" + sets for sets in files_valid]
 
-        epochs      = [15, 50, 25]      # Number of epochs
+        epochs      = [20, 50, 25]      # Number of epochs
         alphaKD_exp = [ 0, 10, 10]      # Knowledge Distillation (KD) loss weight
         alphaL2_exp = [ 0,  1,  1]      # Embedding Matching (FM) loss weight
 
@@ -41,7 +41,7 @@ def process_train(args):
         files_train = ["sce_E5/" + sets for sets in files_train]
         files_valid = ["sce_E5/" + sets for sets in files_valid]
 
-        epochs      = [25,  10,  10,  10,  10]     # Number of epochs
+        epochs      = [20,  10,  10,  10,  10]     # Number of epochs
         alphaKD_exp = [ 0, 100, 100, 100, 100]     # Knowledge Distillation (KD) loss weight
         alphaL2_exp = [ 0,  10,  10,  10,  10]     # Embedding Matching (FM) loss weight
 
@@ -89,7 +89,6 @@ def process_test(args):
     )
 
 if __name__ == "__main__":
-    set_random_seeds(seed_value=42)
     parser = argparse.ArgumentParser()
 
     # Experiment identifier

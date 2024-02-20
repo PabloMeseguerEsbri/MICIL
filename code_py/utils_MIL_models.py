@@ -4,7 +4,8 @@ import torch
 import torch.nn as nn
 import torchvision
 from nystrom_attention import NystromAttention
-
+import random
+set_random_seeds() # Reproducibility
 
 #########################################################################
 ######################## ViT AGGREGATION ################################
@@ -92,3 +93,8 @@ class PPEG(nn.Module):
         x = x.flatten(2).transpose(1, 2)
         x = torch.cat((cls_token.unsqueeze(1), x), dim=1)
         return x
+def set_random_seeds(seed_value=0):
+    np.random.seed(seed_value)
+    random.seed(seed_value)
+    torch.manual_seed(seed_value)
+    torch.cuda.manual_seed(seed_value)
