@@ -82,7 +82,6 @@ def process(args):
     plot_training(metrics = train_metrics, fig_name = args.name_experiment)
 
 if __name__ == "__main__":
-    set_random_seeds(seed_value=42)
     parser = argparse.ArgumentParser()
 
     # Experiment identifier
